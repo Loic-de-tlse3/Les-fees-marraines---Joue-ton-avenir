@@ -146,6 +146,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2625189056527643930}
+  - component: {fileID: 3673139054929376444}
+  - component: {fileID: 8803694936169637946}
   m_Layer: 0
   m_Name: QTE
   m_TagString: Untagged
@@ -171,6 +173,93 @@ Transform:
   - {fileID: 6753561424237046131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3673139054929376444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256092411284509548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7199ae4b99f0b6a9367088b947aba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QTECombatBridge
+  logTransitions: 1
+  onPhase1Started:
+    m_PersistentCalls:
+      m_Calls: []
+  onPhase2Started:
+    m_PersistentCalls:
+      m_Calls: []
+  onQTESucceeded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onQTEFailed:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8803694936169637946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256092411284509548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70810053a21ac6e3be3b6f3fd6da275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobileQTESequence
+  steps:
+  - stepName: 
+    instruction: 
+    type: 0
+    timeLimit: 0
+    maxAttempts: 0
+    infiniteRetry: 0
+    holdDuration: 0
+    swipeMinDistance: 0
+    swipeMaxDuration: 0
+    swipeDirection: {x: 0, y: 0}
+    directionDotMin: 0
+    touchZone: {fileID: 0}
+    onStepStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    onAttemptFailed:
+      m_PersistentCalls:
+        m_Calls: []
+    onStepSucceeded:
+      m_PersistentCalls:
+        m_Calls: []
+    onStepFailedFinal:
+      m_PersistentCalls:
+        m_Calls: []
+  autoStartOnEnable: 0
+  autoStartDelay: 5
+  useUnscaledTime: 1
+  retryDelay: 0.35
+  onStepIndexChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onSequenceSucceeded:
+    m_PersistentCalls:
+      m_Calls: []
+  onSequenceFailed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4309995954091072566
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,9 +380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Scene_changer
   sceneName: 
-  scenePath: 
-  sceneBuildIndex: 3
-  loadDelay: 0
 --- !u!1 &6616401402276425760
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +605,7 @@ MonoBehaviour:
     onStepFailedFinal:
       m_PersistentCalls:
         m_Calls: []
-  autoStartOnEnable: 1
+  autoStartOnEnable: 0
   autoStartDelay: 0
   useUnscaledTime: 1
   retryDelay: 0.35

@@ -10,26 +10,37 @@ public class QTEHudPresenter : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private Slider progressSlider;
 
-    private void Update()
+    private void Awake()
     {
-        if (sequence == null)
+        EnsureSequenceReference();
+    }
+
+    private void OnEnable()
+    {
+        EnsureSequenceReference();
+    }
+
+    private void EnsureSequenceReference()
+    {
+        if (sequence != null)
         {
             return;
         }
 
-        if (instructionText != null)
+        sequence = GetComponent<MobileQTESequence>();
+        if (sequence == null)
         {
-            instructionText.text = sequence.IsRunning ? sequence.CurrentInstruction : "QTE inactif";
+            sequence = GetComponentInParent<MobileQTESequence>(true);
         }
+    }
 
-        if (attemptText != null)
-        {
-            attemptText.text = sequence.IsRunning ? "Tentative " + sequence.CurrentAttempt : string.Empty;
-        }
+    private void Update()
+    {
+        EnsureSequenceReference();
 
-        if (timerText != null)
+        if (sequence == null)
         {
-            timerText.text = sequence.IsRunning ? sequence.CurrentTimeRemaining.ToString("0.0") + " s" : string.Empty;
+            return;
         }
 
         if (progressSlider != null)

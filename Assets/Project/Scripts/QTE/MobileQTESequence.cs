@@ -171,6 +171,24 @@ public class MobileQTESequence : MonoBehaviour
         }
     }
 
+    public void BindCombatBridge(QTECombatBridge bridge)
+    {
+        if (bridge == null)
+        {
+            Debug.LogWarning("MobileQTESequence: bridge de combat nul, liaison ignorée.", this);
+            return;
+        }
+
+        onStepIndexChanged.RemoveListener(bridge.HandleStepChanged);
+        onStepIndexChanged.AddListener(bridge.HandleStepChanged);
+
+        onSequenceSucceeded.RemoveListener(bridge.HandleSequenceSucceeded);
+        onSequenceSucceeded.AddListener(bridge.HandleSequenceSucceeded);
+
+        onSequenceFailed.RemoveListener(bridge.HandleSequenceFailed);
+        onSequenceFailed.AddListener(bridge.HandleSequenceFailed);
+    }
+
     public float GetCurrentProgress01()
     {
         if (!HasCurrentStep)

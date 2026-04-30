@@ -103,4 +103,7 @@ public class Collectible : MonoBehaviour
     {
         return isCollected;
     }
+
+    // Expose le type d'item pour que d'autres composants puissent le repérer
+    public string ItemType => itemType;
 }
