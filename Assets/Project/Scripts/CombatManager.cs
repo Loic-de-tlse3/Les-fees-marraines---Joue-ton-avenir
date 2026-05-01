@@ -66,9 +66,9 @@ public class CombatManager : MonoBehaviour
     private string pendingMessage = null;
 
     private const string IntroSentence = "Trouve un objet pour la faire taire.";
-    private const string QTE1ReturnSentence = "Retrourne devant l’araignée pour utiliser la lampe, maintiens appuyer.";
+    private const string QTE1ReturnSentence = "Retourne devant la mère maléfique pour utiliser la lampe, maintiens appuyé.";
     private const string HypnosisSentence = "La mère maléfique se met en colère et utilise un pouvoir hypnotique, trouve un objet pour ne plus l’entendre !";
-    private const string QTE2ReturnSentence = "Retourne devant elle et monte le son en blayant ton écran vers le haut";
+    private const string QTE2ReturnSentence = "Retourne devant elle et monte le son en balayant vers le haut pour ne plus l'entendre.";
     private const string FinalEscapeSentence = "Elle est destabilisée mais s'échappe avec ta meilleure amie !";
 
     private void Awake()

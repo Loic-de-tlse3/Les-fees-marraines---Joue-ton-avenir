@@ -14,77 +14,106 @@ public class AuthManager : MonoBehaviour
 
     private FirebaseAuth auth;
 
-    void Start()
+    void Awake()
     {
-        // Initialise Firebase
-        FirebaseApp app = FirebaseApp.DefaultInstance;
-        auth = FirebaseAuth.DefaultInstance;
+        // Vérifications rapides des références UI (évite NullReference silencieuses)
+        if (emailInput == null) Debug.LogError("AuthManager: emailInput n'est pas assigné dans l'Inspector");
+        if (passwordInput == null) Debug.LogError("AuthManager: passwordInput n'est pas assigné dans l'Inspector");
+        if (messageText == null) Debug.LogError("AuthManager: messageText n'est pas assigné dans l'Inspector");
+
+        try
+        {
+            FirebaseApp app = FirebaseApp.DefaultInstance;
+            auth = FirebaseAuth.DefaultInstance;
+            Debug.Log("Firebase Auth initialisé correctement.");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Erreur d'initialisation Firebase: " + e.GetType().Name + " - " + e.Message + "\n" + e.StackTrace);
+            if (messageText != null) messageText.text = "Erreur d'initialisation Firebase: " + e.Message;
+        }
     }
 
     public async void Register()
     {
-        string email = emailInput.text;
-        string password = passwordInput.text;
+        string email = emailInput?.text ?? "";
+        string password = passwordInput?.text ?? "";
 
         if (string.IsNullOrEmpty(email))
         {
-            messageText.text = "Veuillez entrer une adresse e-mail valide.";
+            if (messageText != null) messageText.text = "Veuillez entrer une adresse e-mail valide.";
             return;
         }
 
         if (string.IsNullOrEmpty(password))
         {
-            messageText.text = "Veuillez entrer un mot de passe.";
+            if (messageText != null) messageText.text = "Veuillez entrer un mot de passe.";
+            return;
+        }
+
+        if (auth == null)
+        {
+            if (messageText != null) messageText.text = "Firebase n'est pas prêt. Regarde la Console Unity.";
+            Debug.LogError("Register() appelé alors que FirebaseAuth n'est pas initialisé.");
             return;
         }
 
         try
         {
             var user = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
-            messageText.text = "Inscription réussie !";
+            if (messageText != null) messageText.text = "Inscription réussie !";
         }
         catch (FirebaseException e)
         {
-            messageText.text = GetFrenchErrorMessage(e);
+            if (messageText != null) messageText.text = GetFrenchErrorMessage(e);
+            Debug.LogError("FirebaseException lors de l'inscription: " + e.Message);
         }
         catch (System.Exception e)
         {
-            messageText.text = "Une erreur inattendue est survenue. (" + e.Message + ")";
-            Debug.LogError("Erreur inattendue : " + e.Message);
+            if (messageText != null) messageText.text = "Une erreur inattendue est survenue. (" + e.Message + ")";
+            Debug.LogException(e);
         }
     }
 
     public async void Login()
     {
-        string email = emailInput.text;
-        string password = passwordInput.text;
+        string email = emailInput?.text ?? "";
+        string password = passwordInput?.text ?? "";
 
         if (string.IsNullOrEmpty(email))
         {
-            messageText.text = "Veuillez entrer une adresse e-mail valide.";
+            if (messageText != null) messageText.text = "Veuillez entrer une adresse e-mail valide.";
             return;
         }
 
         if (string.IsNullOrEmpty(password))
         {
-            messageText.text = "Veuillez entrer un mot de passe.";
+            if (messageText != null) messageText.text = "Veuillez entrer un mot de passe.";
+            return;
+        }
+
+        if (auth == null)
+        {
+            if (messageText != null) messageText.text = "Firebase n'est pas prêt. Regarde la Console Unity.";
+            Debug.LogError("Login() appelé alors que FirebaseAuth n'est pas initialisé.");
             return;
         }
 
         try
         {
             var user = await auth.SignInWithEmailAndPasswordAsync(email, password);
-            messageText.text = "Connexion réussie !";
-            SceneManager.LoadScene("ScèneTest"); 
+            if (messageText != null) messageText.text = "Connexion réussie !";
+            SceneManager.LoadScene("EnigmeScene");
         }
         catch (FirebaseException e)
         {
-            messageText.text = GetFrenchErrorMessage(e);
+            if (messageText != null) messageText.text = GetFrenchErrorMessage(e);
+            Debug.LogError("FirebaseException lors de la connexion: " + e.Message);
         }
         catch (System.Exception e)
         {
-            messageText.text = "Une erreur inattendue est survenue. (" + e.Message + ")";
-            Debug.LogError("Erreur inattendue : " + e.Message);
+            if (messageText != null) messageText.text = "Une erreur inattendue est survenue. (" + e.Message + ")";
+            Debug.LogException(e);
         }
     }
 

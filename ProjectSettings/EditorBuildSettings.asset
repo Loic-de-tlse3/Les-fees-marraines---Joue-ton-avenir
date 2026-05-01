@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/Auth/Connexion.unity
     guid: 4cd7b2e636351b75680a2553e371f862
   - enabled: 1
+    path: Assets/Project/Scenes/Game/EnigmeScene.unity
+    guid: d30fbee988f498842a6e22beea9f1786
+  - enabled: 1
+    path: Assets/Project/Scenes/Game/CombatScene.unity
+    guid: 6683b6830e6980d508e01045cfab1589
+  - enabled: 0
     path: "Assets/Project/Scenes/Sc\xE8neTest.unity"
     guid: 7b7e57b7f4f762228a375556f0a6bf4c
   m_configObjects:

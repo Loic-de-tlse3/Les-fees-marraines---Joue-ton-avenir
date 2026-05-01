@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbc9e814b89b62659dd753504ccdfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Scene_changer
-  sceneName: "Project/Scenes/Sc\xE8neTest"
+  sceneName: EnigmeScene
 --- !u!4 &302595397
 Transform:
   m_ObjectHideFlags: 0
