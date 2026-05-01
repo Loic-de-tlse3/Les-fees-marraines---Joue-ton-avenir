@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Project/Scenes/Game/EnigmeScene.unity
+    guid: d30fbee988f498842a6e22beea9f1786
+  - enabled: 1
     path: Assets/Project/Scenes/Auth/Inscription.unity
     guid: 08a0a9431eaef873e91a8442787543fa
   - enabled: 1
     path: Assets/Project/Scenes/Auth/Connexion.unity
     guid: 4cd7b2e636351b75680a2553e371f862
-  - enabled: 1
-    path: Assets/Project/Scenes/Game/EnigmeScene.unity
-    guid: d30fbee988f498842a6e22beea9f1786
   - enabled: 1
     path: Assets/Project/Scenes/Game/CombatScene.unity
     guid: 6683b6830e6980d508e01045cfab1589

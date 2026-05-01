@@ -10,6 +10,9 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/[Bb]uilds_BackUpThisFolder_ButDontShipItWithYourGame/
+/[Bb]uilds_Data/
+/[Jj]oueTonAvenir_BurstDebugInformation_DoNotShip/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 *.log
